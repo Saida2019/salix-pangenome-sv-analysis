@@ -13,7 +13,7 @@ set -euo pipefail
 
 module load multiqc/1.30
 
-# USER CONFIGURATION    (edit these paths)
+# USER CONFIGURATION (edit these paths)
 FASTQC_RESULTS_DIR="/path/to/fastqc_output_directory"     # contains *_fastqc.zip/html
 MULTIQC_OUT_DIR="/path/to/multiqc_output_directory"
 
