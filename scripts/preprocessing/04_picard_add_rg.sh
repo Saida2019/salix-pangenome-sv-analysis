@@ -25,7 +25,7 @@ SAMPLE_TABLE="/path/to/samples_bam_table.txt"
 # Header + one BAM per line
 # Columns: bam_filename  SM  LB  PL  PU  PM  PI
 
-mkdir -p "$BAM_RG_DIR"
+mkdir -p logs "$BAM_RG_DIR"
 
 LINE=$(sed -n "$((SLURM_ARRAY_TASK_ID + 2))p" "$SAMPLE_TABLE")
 if [[ -z "${LINE:-}" ]]; then

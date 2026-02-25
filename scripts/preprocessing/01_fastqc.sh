@@ -19,7 +19,7 @@ RAW_FASTQ_DIR="/path/to/raw_fastq_directory"
 SAMPLE_LIST="/path/to/sample_list.txt"               # one sample ID per line
 FASTQC_RESULTS_DIR="/path/to/fastqc_output_directory"
 
-mkdir -p "$FASTQC_RESULTS_DIR"
+mkdir -p logs "$FASTQC_RESULTS_DIR"
 
 # Retrieve sample ID for this array task
 # SLURM array index is 0-based; sed line numbers are 1-based → add +1

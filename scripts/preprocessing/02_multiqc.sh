@@ -17,7 +17,7 @@ module load multiqc/1.30
 FASTQC_RESULTS_DIR="/path/to/fastqc_output_directory"     # contains *_fastqc.zip/html
 MULTIQC_OUT_DIR="/path/to/multiqc_output_directory"
 
-mkdir -p "$MULTIQC_OUT_DIR"
+mkdir -p logs "$MULTIQC_OUT_DIR"
 
 TMPDIR="${PDC_TMP:-/tmp}/multiqc_${SLURM_JOB_ID}"
 mkdir -p "$TMPDIR"

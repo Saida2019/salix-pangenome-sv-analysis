@@ -3,7 +3,7 @@
 #SBATCH -J bwa_mapping_array
 #SBATCH -p shared
 #SBATCH -N 1
-#SBATCH --cpus-per-task=32
+#SBATCH --cpus-per-task=16
 #SBATCH --mem=64G
 #SBATCH -t 12:00:00
 #SBATCH --array=0-80%5                 
@@ -22,7 +22,7 @@ SAMPLE_LIST="/path/to/sample_list.txt"               # one sample ID per line
 REFERENCE_FASTA="/path/to/reference/genome.fasta"
 BWA_RESULTS_DIR="/path/to/output/bwa_results_directory"
 
-mkdir -p "$BWA_RESULTS_DIR"
+mkdir -p logs "$BWA_RESULTS_DIR"
 
 ACC=$(sed -n "$((SLURM_ARRAY_TASK_ID + 1))p" "$SAMPLE_LIST")
 if [[ -z "${ACC:-}" ]]; then
@@ -41,13 +41,10 @@ fi
 TMPDIR="${PDC_TMP:-/tmp}/${SLURM_JOB_ID}_${SLURM_ARRAY_TASK_ID}"
 mkdir -p "$TMPDIR"
 trap 'rm -rf "$TMPDIR"' EXIT
-cd "$TMPDIR"
 
-cp "$R1" "$R2" "$TMPDIR"
 R1_FILE=$(basename "$R1")
 R2_FILE=$(basename "$R2")
-
-BAM_OUT="${ACC}.sorted.bam"
+BAM_OUT="$TMPDIR/${ACC}.sorted.bam"
 
 bwa mem -M -t "${SLURM_CPUS_PER_TASK}" "$REFERENCE_FASTA" "$R1_FILE" "$R2_FILE" | \
   samtools view -b -@ "${SLURM_CPUS_PER_TASK}" - | \
