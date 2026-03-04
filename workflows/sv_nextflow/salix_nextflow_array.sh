@@ -29,7 +29,7 @@ mkdir -p "$NXF_HOME" "$NXF_WORK"
 
 export NXF_OPTS="-Xms1g -Xmx4g"
 
-nextflow run sv_calling.nf \
+nextflow run salix_sv_calling.nf \
   -c salix_nextflow_array.config \
   -work-dir "$NXF_WORK" \
   --reference '/cfs/klemming/projects/supr/naiss2025-23-666/Saida/Reference/Salix_viminalis.fasta' \
