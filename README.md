@@ -1,4 +1,4 @@
-# Structural Variant Detection and Graph Pangenome Construction in *Salix viminalis*
+# Structural Variant Analysis and Graph Pangenome Construction in *Salix viminalis*
 
 Bioinformatics workflows and scripts for preprocessing, structural variant (SV) detection, and VG-based pangenome analysis in *Salix viminalis*.
 
